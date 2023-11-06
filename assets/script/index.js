@@ -42,9 +42,25 @@ function game() {
 
     for (let i = 5; i >= 0; i--) {
         numberGuess.innerText = i;
-        console.log(i)
+
+        if (value.length > 0 && value.length <= 2) {
+            return true;
+        } else {
+            clue.innerText = 'Please, enter a 2-digit number';
+        }
+
+        if (value == random) {
+            clue.innerText = `Congratulations, the number is ${random}`;
+        } else if (value > random) {
+            count -= 1; // Actualizar count en cada rama del condicional
+            numberGuess.innerText = count;
+            clue.innerText = bigger[randomPhrase];
+        } else {
+            count -= 1; // Actualizar count en cada rama del condicional
+            numberGuess.innerText = count;
+            clue.innerText = smaller[randomPhrase];
+        }
     }
-    
 }
 
 
