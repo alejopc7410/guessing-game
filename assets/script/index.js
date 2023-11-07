@@ -4,6 +4,9 @@ const input = document.querySelector('.input');
 const clue = document.querySelector('.clue');
 const numberGuess = document.querySelector('.oportunity');
 const guessBtn = document.querySelector('.submit')
+const start = document.querySelector('.start')
+const gameWindow = document.querySelector('.game')
+const dialog = document.querySelector('.welcome-window')
 let bigger = ["I'm more smaller", "You are close", "I'm not too bigger", "Subtract a little bit", "Not far away"]
 let smaller = ["I'm more bigger", "You are close", "I'm not too smaller", "Add a little bit", "Not far away"]
 let count = 5;
@@ -47,6 +50,11 @@ function game(number) {
 }
 
 console.log(random)
+
+start.addEventListener('click', () => {
+    dialog.style.display = 'none'
+    gameWindow.style.display = 'block'
+})
 
 guessBtn.addEventListener('click', () => {
     let value = input.value;

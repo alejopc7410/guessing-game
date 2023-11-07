@@ -69,6 +69,7 @@ section:nth-child(2) {
     position: relative;
     top: 1px;
     cursor: pointer;
+    font-weight: 750;
 }
 
 .number-guesses {
@@ -77,4 +78,57 @@ section:nth-child(2) {
     font-family: "Nunito Sans", sans-serif;
     position: relative;
     bottom: -12vh;
+}
+
+.game {
+    display: none;
+}
+
+.welcome-window {
+    z-index: 999;
+    background: rgb(103 103 103 / 0.5);
+    height: 100%;
+    width: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.welcome-dialog {
+    display: grid;
+    place-items: center;
+    width: 60vh;
+    height: 80vh;
+    border: 1vh  solid #00ff00;
+    background-color: #000;
+    border-radius: 5px;
+}
+
+.welcome-dialog h2 {
+    font-size: 9vh;
+    font-weight: 800;
+    color: #fff;
+    text-align: center;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.welcome-dialog p {
+    font-size: 18px;
+    font-weight: 600;
+    color: #fff;
+    text-align: center;
+    font-family: "Nunito Sans", sans-serif;
+}
+
+.start {
+    height: 7vh;
+    width: 14vh;
+    border-radius: 8px;
+    cursor: pointer;
+    background-color: rgb(99, 99, 214);
+    font-weight: 700;
 }
