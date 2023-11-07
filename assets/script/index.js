@@ -3,49 +3,50 @@
 const input = document.querySelector('.input');
 const clue = document.querySelector('.clue');
 const numberGuess = document.querySelector('.oportunity');
+let bigger = ["I'm more smaller", "You are close", "I'm not too bigger", "Subtract a little bit", "Not far away"]
+let smaller = ["I'm more bigger", "You are close", "I'm not too smaller", "Add a little bit", "Not far away"]
+let value = input.value.trim();
+let count = 5;
 let random = randomNumber()
-console.log(random)
-
 
 function randomNumber () {
     return Math.floor(Math.random() * 25);
 }
 
-function validation (input) {
-    if (input.length > 0 && input.length <= 2) {
-        return true;
-    } else {
-        clue.innerText = 'Please, enter a 2-digit number';
-        return false;
+function checkNum (number) {
+    if (number.length > 2 || isNaN(number)) {
+        clue.innerText = 'Please, enter a valid two-digit number';
+        return;
     }
 }
 
-let bigger = ["I'm more smaller", "You are close", "I'm not too bigger", "Subtract a little bit", "Not far away"]
-let smaller = ["I'm more bigger", "You are close", "I'm not too smaller", "Add a little bit", "Not far away"]
-let count = 5;
-
-function game() {
-    let randomPhrase = Math.floor(Math.random() * 4);
-    let value = input.value;
-     
-    for (let i = 5; i >= 0; i--) {
-        numberGuess.innerText = count;
-
-        validation(value)
-
-        if (value == random) {
-            clue.innerText = `Congratulations, the number is ${random}`;
-        } else if (value > random) {
-            count -= 1; 
-            numberGuess.innerText = count;
-            clue.innerText = bigger[randomPhrase];
-        } else {
-            count -= 1; 
-            numberGuess.innerText = count;
-            clue.innerText = smaller[randomPhrase];
+function game(value) {
+    let randomPhrase = Math.floor(Math.random() * 4)
+    
+    if (count > 1) {
+        switch (true) {
+            case value === random:
+                clue.innerText = `Congratulations. The number is ${random}`
+                break;
+            case value < random:
+                clue.innerText = smaller[randomPhrase]
+                break;
+            case value > random:
+                clue.innerText = bigger[randomPhrase]
+                break;
+            case value > 25:
+                clue.innerText = "Type a number under 25"
+                break;
         }
+    } else {
+        clue.innerText = '¡¡GAME OVER!!';
     }
 }
 
-
-input.addEventListener('change', game)
+console.log(random)
+input.addEventListener('change', () => {
+    checkNum(value);
+    game(value);
+    count--;
+    numberGuess.innerText = `${count}`
+})
