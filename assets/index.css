@@ -138,7 +138,7 @@ section:nth-child(2) {
     .welcome-dialog {
         display: grid;
         place-items: center;
-        width: 50vh;
+        width: 44vh;
         height: 70vh;
         border: 1vh  solid #00ff00;
         background-color: #000;
